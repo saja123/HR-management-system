@@ -1,41 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>HR-managment system
     </title>
     <link rel="stylesheet" href="style.css">
-    
+
 
 </head>
+
 <body>
-   <header> 
- 
-                <div> 
-                    <ul> 
-                        <li><a class="Item" href="index.html">Home</a></li> 
+    <header>
+        <img src="pexels-photo-3779427.webp" alt="logo">
+        <div>
+            <ul>
+                <li><a class="Item" href="index.html">Home</a></li>
 
-                        <li><a class="Item" href="accounting.html">Accounting</a></li>  
-                
-                    </ul> 
-                
-            </div> 
- 
-    
-            </header>
-            <main class="main"> <!--to make style-->
+                <li><a class="Item" href="accounting.html">Accounting</a></li>
 
-            </main>
-        
-             
- 
+            </ul>
+
+        </div>
+
+
+    </header>
+    <main class="main"> <!--to make style-->
+        <form id="emp">
+            <fieldset>
+                <legend><em>information emp </em></legend>
+                <label for="fullNme">Full name: </label>
+                <input type="text" name="fullName" id="fullName" placeholder="fullName">
+                </br>
+                </br>
+                <label for="Department">Department: </label>
+                <select id="Department" name="Department">
+                    <option value="Administration">Administration</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Development">Development</option>
+                    <option value="Finance">Finance</option>
+                </select>
+                </br>
+                </br>
+                <label for="Level">Level: </label>
+                <select id="level" name="level">
+                    <option value="Junior">Junior</option>
+                    <option value="Mid-Senior">Mid-Senior</option>
+                    <option value="Senior">Senior</option>
+                </select>
+                </br>
+                </br>
+                <label for="imageUrl">Image url: </label>
+                <input type="text" name="imageUrl" id="imageUrl" placeholder="Image url">
+                <!--to make a text url from user-->
+                </br>
+                </br>
+                <input type="submit" value="Submit" id="button">
+                <!-- <button type="submit" id="button">Submit</button> -->
+
+                </br>
+                </br>
+                </br>
+            </fieldset>
+
+        </form>
+        <section id="sectionCard"></section>
+
+    </main>
+
+
+
     <footer>
-        <a href="https://www.facebook.com/">facebook</a>
-        <a href="https://twitter.com/">twitter</a>
-        <p> @2024 <span>Saja </span> All right recevid. </p>
+        <a href="https://www.facebook.com/">  <i class="fa-brands fa-facebook"></i></a>
+        
+        <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>
+        <p> @2024 Saja All right recevid. </p>
     </footer>
-    <script src = "hr.js"></script>
+   
+    <script src="hr.js"></script>
 </body>
 
 
