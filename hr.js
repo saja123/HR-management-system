@@ -1,5 +1,5 @@
-'use strict'
-const employees = [];
+'use strict';
+let employees = [];
 console.log(employees)
 let form = document.getElementById('emp'); // get element by id
 form.addEventListener('submit', getValue); // to listen event from user
@@ -42,13 +42,13 @@ Employee.prototype.net = function () {
 }
 
 
-new Employee(1000, "GhaziSamer", "Administration", "Senior", "pexels-photo-3779427.webp");
-new Employee(1001, "LanaAli", "Finance", "Senior", "pexels-photo-3779427.webp");
-new Employee(1002, "TamerAyoub", "Marketing", "Senior", "pexels-photo-3779427.webp");
-new Employee(1003, "SafiWalid", "Administration", "Mid-Senior", "pexels-photo-3779427.webp");
-new Employee(1004, "OmarZaid", "Developer", "Senior", "pexels-photo-3779427.webp");
-new Employee(1005, "RanaSaleh", "Developer", "Junior", "pexels-photo-3779427.webp");
-new Employee(1006, "HadiAhmad", "Finance", "Mid-Senior", "pexels-photo-3779427.webp");
+// new Employee(1000, "GhaziSamer", "Administration", "Senior", "pexels-photo-3779427.webp");
+// new Employee(1001, "LanaAli", "Finance", "Senior", "pexels-photo-3779427.webp");
+// new Employee(1002, "TamerAyoub", "Marketing", "Senior", "pexels-photo-3779427.webp");
+// new Employee(1003, "SafiWalid", "Administration", "Mid-Senior", "pexels-photo-3779427.webp");
+// new Employee(1004, "OmarZaid", "Developer", "Senior", "pexels-photo-3779427.webp");
+// new Employee(1005, "RanaSaleh", "Developer", "Junior", "pexels-photo-3779427.webp");
+// new Employee(1006, "HadiAhmad", "Finance", "Mid-Senior", "pexels-photo-3779427.webp");
 
 Employee.prototype.render = function () {
     let main = document.getElementById('sectionCard') //catch element in html here
@@ -75,22 +75,17 @@ Employee.prototype.render = function () {
      let footer = document.createElement("h5")
      footer.textContent = `Salary: ${this.Salary}`;
      divEl.append(footer);
-
-
-    // div.className = "emptable"
-    // let employeename = document.createElement("p") //to create div
-    // employeename.textContent = "name: " + this.Name; //to contain content
-    // let employeeSalary = document.createElement("p")
-    // employeeSalary.textContent = "salary: " + this.Salary;
-    // div.appendChild(employeename); //to create child to main 
-    // div.appendChild(employeeSalary); //to create child to main
 }
-employees.forEach(Emp => { //to see all line 35 together
-    Emp.calculateSalary()
-    Emp.net()
-    Emp.render()
-})
 
+function renderItem() {
+    employees.forEach(Emp => { //to see all line 35 together
+        Emp.calculateSalary();
+        Emp.net();
+        Emp.render();
+    })
+}
+
+// renderItem();
 Employee.prototype.uniqueID = function () {
     const min = 1000;
     const max = 3000;
@@ -111,8 +106,47 @@ function getValue(event) { //lisining to html
     addEmployee.calculateSalary();
     addEmployee.net();
     addEmployee.render();
+    //call saveData to save all employees
+    saveData(employees);
 }
 
+//local storage
+function saveData(data){
+    //to return me string data not [object, object]  i need to change arra to string because that i need to call method json.stringify
+    let stringifyData = JSON.stringify(data);
+    localStorage.setItem("AllEmployees", stringifyData);
+}
+
+console.log("save:", employees);
+function getData() {
+    let retrievedData = localStorage.getItem("AllEmployees");
+    let arr1 = JSON.parse(retrievedData); //call reternme data from string to array for me
+   
+    if (arr1 !== null) {
+        employees = arr1.map(employeeData => {
+            let employee = new Employee(
+                employeeData.employeeID,
+                employeeData.Name,
+                employeeData.Department,
+                employeeData.Level,
+                employeeData.Image,
+                employeeData.Salary
+            );
+            return employee;
+        });
+        renderItem();
+    }
+    // if (arr1 !== null){
+    // for (let i = 0; i < arr1.length; i++){
+    //     new Employee(arr1[i].employeeID, arr1[i].Name, arr1[i].Department, arr1[i].Level, arr1[i].Image, arr1[i].Salary);
+    //     // newEmp.render();
+    // }
+    // renderItem();
+    // }
+    // console.log(arr1);
+    //console.log(typeof arr1);
+}
+getData();
 
 
 
