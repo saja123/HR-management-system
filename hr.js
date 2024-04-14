@@ -135,15 +135,6 @@ function getData() {
             return employee;
         });
     }
-    // if (arr1 !== null){
-    // for (let i = 0; i < arr1.length; i++){
-    //     new Employee(arr1[i].employeeID, arr1[i].Name, arr1[i].Department, arr1[i].Level, arr1[i].Image, arr1[i].Salary);
-    //     // newEmp.render();
-    // }
-    // renderItem();
-    // }
-    // console.log(arr1);
-    //console.log(typeof arr1);
 }
 getData();
 renderItem();
