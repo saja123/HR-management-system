@@ -42,13 +42,13 @@ Employee.prototype.net = function () {
 }
 
 
-// new Employee(1000, "GhaziSamer", "Administration", "Senior", "pexels-photo-3779427.webp");
-// new Employee(1001, "LanaAli", "Finance", "Senior", "pexels-photo-3779427.webp");
-// new Employee(1002, "TamerAyoub", "Marketing", "Senior", "pexels-photo-3779427.webp");
-// new Employee(1003, "SafiWalid", "Administration", "Mid-Senior", "pexels-photo-3779427.webp");
-// new Employee(1004, "OmarZaid", "Developer", "Senior", "pexels-photo-3779427.webp");
-// new Employee(1005, "RanaSaleh", "Developer", "Junior", "pexels-photo-3779427.webp");
-// new Employee(1006, "HadiAhmad", "Finance", "Mid-Senior", "pexels-photo-3779427.webp");
+new Employee(1000, "GhaziSamer", "Administration", "Senior", "./assets/Ghazi.jpg");
+new Employee(1001, "LanaAli", "Finance", "Senior", "./assets/Lana.jpg");
+new Employee(1002, "TamerAyoub", "Marketing", "Senior", "./assets/Tamara.jpg");
+new Employee(1003, "SafiWalid", "Administration", "Mid-Senior", "./assets/Safi.jpg");
+new Employee(1004, "OmarZaid", "Development", "Senior", "./assets/Omar.jpg");
+new Employee(1005, "RanaSaleh", "Development", "Junior", "./assets/Rana.jpg");
+new Employee(1006, "HadiAhmad", "Finance", "Mid-Senior", "./assets/Hadi.jpg");
 
 Employee.prototype.render = function () {
     let main = document.getElementById('sectionCard') //catch element in html here
@@ -72,15 +72,15 @@ Employee.prototype.render = function () {
     let body = document.createElement("h4")
     body.textContent = `Department: ${this.Department} - Level: ${this.Level}`;
     divEl.append(body);
-     let footer = document.createElement("h5")
-     footer.textContent = `Salary: ${this.Salary}`;
-     divEl.append(footer);
+    let footer = document.createElement("h5")
+    footer.textContent = `Salary: ${this.Salary}`;
+    divEl.append(footer);
 }
 
 function renderItem() {
     employees.forEach(Emp => { //to see all line 35 together
         Emp.calculateSalary();
-        Emp.net();
+        // Emp.net();
         Emp.render();
     })
 }
@@ -111,7 +111,7 @@ function getValue(event) { //lisining to html
 }
 
 //local storage
-function saveData(data){
+function saveData(data) {
     //to return me string data not [object, object]  i need to change arra to string because that i need to call method json.stringify
     let stringifyData = JSON.stringify(data);
     localStorage.setItem("AllEmployees", stringifyData);
@@ -121,7 +121,7 @@ console.log("save:", employees);
 function getData() {
     let retrievedData = localStorage.getItem("AllEmployees");
     let arr1 = JSON.parse(retrievedData); //call reternme data from string to array for me
-   
+
     if (arr1 !== null) {
         employees = arr1.map(employeeData => {
             let employee = new Employee(
@@ -134,7 +134,6 @@ function getData() {
             );
             return employee;
         });
-        renderItem();
     }
     // if (arr1 !== null){
     // for (let i = 0; i < arr1.length; i++){
@@ -147,6 +146,7 @@ function getData() {
     //console.log(typeof arr1);
 }
 getData();
+renderItem();
 
 
 
